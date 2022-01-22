@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href = "https://fonts.googleapis.com/css?family=Roboto+Mono|Roboto+Slab|Roboto:100,200,300,400,500,600,700,800,900" rel = "stylesheet" />
+    <script src="https://kit.fontawesome.com/8cc6fae60b.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+    <div class='header'>
+        <div class='titleContainer'>
+            <i class="fas fa-book fa-6x" style="color: #fcbf49;"></i>
+            <h1 class='title'>LIBRARY</h1>
+        </div>
+
+    </div>
+
+    <div class="mainSection">
+        <div class='sidebar'>
+            <h2>Books Read</h2>
+            <h3 id='booksRead'>0</h3>
+            <h2>Books Unread</h2>
+            <h3 id='booksUnread'>0</h3>
+            <h2>Total Books</h2>
+            <h3 id='booksTotal'>0</h3>
+
+
+            <div class="addButtonContainer"><button class='button' onclick="openForm()">Add Book</button></div>
+        </div>
+
+        <div id='overlay' >
+                
+            <form class='addBookForm' id='addBookForm'>
+                <h4>Add new book</h4>
+                <input type="text" id="bookName" name="bookName" placeholder="Book Name" />
+                <input type="text" id="author" name="author" placeholder="Author" />
+                <input type="number" id="pages" name="pages" placeholder="Page Count" />
+
+                <span class='toggleButtonContainer'>
+                    <label class='labelReadorNot'>Read or not?</label>
+                    <label class="switch">
+                        <input id='readOrNot' type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                </span>
+                <!-- <button type='button'>submit</button>  -->
+                <!-- <input value='Submit' type='submit' onclick="addForm()"></input> -->
+
+                <div class="submitButtonContainer"><button id='submit' type="submit" class='submitButton'>Submit</button> </div>
+                <div class="cancelButtonContainer"><button class='cancelButton' onclick="closeBookForm()">Cancel</button></div>
+
+            </form>
+
+        </div>
+
+        <div id='bookSection' class='bookSection'>
+            <!--<div id='bookCard' class='book-card'>
+                <p class="bookName">"Harry Potter"</p>
+                <p>JK Rowling</p>
+                <p>768 pages</p>
+            </div> -->
+
+            <!-- <div id='bookCard' class='book-card'>
+                <p class="bookName">"Harry Potter"</p>
+                <p>JK Rowling</p>
+                <p>768 pages</p>
+                <div class="deleteButtonContainer"><button class='deleteButton'>Delete</button></div>
+                <div class="readButtonContainer"><button class='readButton'>Read</button></div>
+
+            </div> -->
+<!-- 
+            <div id='bookCard' class='book-card'>
+                <p class="bookName">"Harry Potter"</p>
+                <p>JK Rowling</p>
+                <p>768 pages</p>
+            </div> --> 
+
+
+ 
+            
+
+
+            <!-- <form class='addBookForm'>
+                <h4>Add new book</h4>
+                <input type="text" id="bookName" name="bookName" placeholder="Book Name">
+                <input type="text" id="author" name="author" placeholder="Author">
+                <input type="number" id="pageCount" name="pageCount" placeholder="Page Count">
+
+                <span>
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                </span>
+
+
+                <div class="submitButtonContainer"><input type='submit'></input></div>
+            </form> -->
+
+        </div>
+    
+    </div>
+
+   
+</body>
+</html>
+
+
+<script src="script.js"></script>
+
+
