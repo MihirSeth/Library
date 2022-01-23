@@ -18,11 +18,7 @@ const bookSection = document.getElementById("bookSection");
 
 const card = document.getElementById("bookCard");
 
-
-
 submitButton.addEventListener('click', createNewBook);
-
-
 
 
 function updateBookCount(){
@@ -61,30 +57,44 @@ function createNewBook() {
   const pages = document.getElementById('pages').value;
   const readOrNot = document.getElementById('readOrNot').checked;
 
+  let bookAlreadyExists;
 
-  if (pages === ''){ 
-    alert('The number of pages can only be in numbers!')
-  } else{
-    
-    if (readOrNot === true){
-      bookStatus = 'Read'
+  for (i=0;i<library.length;i++){
+    if (library[i]['bookName'] === bookName){
+      bookAlreadyExists = true
     } else{
-      bookStatus = 'Not Read'
+      bookAlreadyExists = false
     }
-  
-    overlay.style.display = "none";
-    form.reset();
-  
-    const newBook = new Book(bookName,author, pages, bookStatus)  
-  
-    library.push(newBook)
-    // console.log(library)
-    localStorage.setItem('library', JSON.stringify(library))
-  
-    location.reload()
-    
-    createLibrary()  
   }
+
+  if (bookAlreadyExists === true){
+    alert('The book already exists in your library!')
+  } else{
+    if (pages === ''){ 
+      alert('The number of pages can only be in numbers!')
+    } else{
+      
+      if (readOrNot === true){
+        bookStatus = 'Read'
+      } else{
+        bookStatus = 'Not Read'
+      }
+    
+      overlay.style.display = "none";
+      form.reset();
+    
+      const newBook = new Book(bookName,author, pages, bookStatus)  
+    
+      library.push(newBook)
+      // console.log(library)
+      localStorage.setItem('library', JSON.stringify(library))
+    
+      location.reload()
+      
+      createLibrary()  
+    }
+  }
+
 
   
 }
@@ -138,15 +148,10 @@ function createLibrary(){
     deleteButton.classList.add('deleteButton')
 
     readButton.classList.add('readButton')
-
-
-
   
     deleteButtonContainer.appendChild(deleteButton)
 
     readButtonContainer.appendChild(readButton)
-
-
 
     bookCard.appendChild(nameCard)
     bookCard.appendChild(authorCard)
@@ -179,8 +184,6 @@ function createLibrary(){
   
   }
   updateBookCount()
-
-
 }
 
 
@@ -211,7 +214,6 @@ function deleteBook(index){
 }
 
 
-
 function closeBookForm(){
   overlay.style.display = "none";
   form.reset();
@@ -222,27 +224,3 @@ window.onload = () => {
   library = JSON.parse(localStorage.getItem('library'))
   createLibrary()
 }
-
- 
- 
- 
- 
- 
- 
- 
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
