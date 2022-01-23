@@ -60,8 +60,7 @@ function createNewBook() {
 
   const pages = document.getElementById('pages').value;
   const readOrNot = document.getElementById('readOrNot').checked;
-  
-  console.log('hello')
+
 
   if (pages === ''){ 
     alert('The number of pages can only be in numbers!')
@@ -76,10 +75,7 @@ function createNewBook() {
     overlay.style.display = "none";
     form.reset();
   
-    const newBook = new Book(bookName,author, pages, bookStatus)
-
-    console.log(newBook)
-  
+    const newBook = new Book(bookName,author, pages, bookStatus)  
   
     library.push(newBook)
     // console.log(library)
