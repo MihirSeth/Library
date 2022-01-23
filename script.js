@@ -221,7 +221,12 @@ function closeBookForm(){
 
 
 window.onload = () => {
-  library = JSON.parse(localStorage.getItem('library'))
+
+  if (JSON.parse(localStorage.getItem('library')) === null){
+
+  } else{ 
+    library = JSON.parse(localStorage.getItem('library'))
+  }
 
   console.log(localStorage.hasOwnProperty('library'))
   createLibrary()
