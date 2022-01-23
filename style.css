@@ -241,7 +241,7 @@ button:hover{
     height: 40px;
     width: 75%;
     border-radius: 15px;
-    color: black;
+    /* color: black; */
 }
 
 .readButton:hover{
@@ -268,6 +268,20 @@ button:hover{
     align-items: center; 
 }
 
+.notReadButton{
+    border: 2px solid black;
+    background-color: #BE3E3E;
+    font-size: 22px;
+    font-weight: 600;
+    height: 40px;
+    width: 75%;
+    border-radius: 15px;
+    /* color: black; */
+}
+
+.notReadButton:hover{
+    background-color: #D05050;
+}
 
 #overlay {
     position: fixed;

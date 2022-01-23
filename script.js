@@ -1,4 +1,4 @@
-let bookStatus; let bookNumber;
+let bookStatus; let bookNumber; let booksReadCount; let booksUnreadCount; let bookReadBoolean
 
 let library = [];
 
@@ -30,20 +30,19 @@ function updateBookCount(){
   const booksUnread = document.getElementById("booksUnread");
   const booksTotal = document.getElementById("booksTotal");
 
-  let booksReadCount = 0;
-  let booksUnreadCount = 0;
-
+  booksReadCount = 0;
+  booksUnreadCount = 0;
 
   for (i=0; i <library.length; i++){
     if (library[i]['bookStatus'] === 'Read'){
+      
       booksReadCount++
     } else{
       booksUnreadCount++
     }
   }
-
   booksRead.innerHTML = booksReadCount
-  booksUnread.innerHTML = booksReadCount
+  booksUnread.innerHTML = booksUnreadCount
 
   booksTotal.innerHTML = library.length
 
@@ -62,29 +61,31 @@ function createNewBook() {
   const pages = document.getElementById('pages').value;
   const readOrNot = document.getElementById('readOrNot').checked;
 
-  // console.log(readOrNot)
 
-  if (readOrNot === true){
-    bookStatus = 'Read'
+  if (pages === ''){ 
+    alert('The number of pages can only be in numbers!')
   } else{
-    bookStatus = 'Not read'
-  }
-
-
-  // console.log(bookName,author, pages, bookStatus)
-  overlay.style.display = "none";
-  form.reset();
-
-  const newBook = new Book(bookName,author, pages, bookStatus)
-
-
-  library.push(newBook)
-  // console.log(library)
-  localStorage.setItem('library', JSON.stringify(library))
-
-  location.reload()
+    
+    if (readOrNot === true){
+      bookStatus = 'Read'
+    } else{
+      bookStatus = 'Not Read'
+    }
   
-  createLibrary()
+    overlay.style.display = "none";
+    form.reset();
+  
+    const newBook = new Book(bookName,author, pages, bookStatus)
+  
+  
+    library.push(newBook)
+    // console.log(library)
+    localStorage.setItem('library', JSON.stringify(library))
+  
+    location.reload()
+    
+    createLibrary()  
+  }
 
   
 }
@@ -123,18 +124,28 @@ function createLibrary(){
     bookCard.classList.add("book-card")
     nameCard.classList.add("bookName")
 
+    readButtonContainer.classList.add('readButtonContainer')
+
+    if(library[i].bookStatus==='Read'){
+      console.log('hello')
+      readButton.classList.add('readButton')
+
+    } else if(library[i].bookStatus==='Not Read'){
+      readButton.classList.add('notReadButton')
+    }
+
     deleteButtonContainer.classList.add('deleteButtonContainer')
     deleteButton.classList.add('deleteButton')
 
-    readButtonContainer.classList.add('readButtonContainer')
     readButton.classList.add('readButton')
+
+
 
   
     deleteButtonContainer.appendChild(deleteButton)
 
     readButtonContainer.appendChild(readButton)
 
-    // console.log(deleteButtonContainer)
 
 
     bookCard.appendChild(nameCard)
@@ -146,6 +157,19 @@ function createLibrary(){
     bookSection.appendChild(bookCard)
     
     deleteButton.addEventListener('click', deleteBookStep);
+    readButton.addEventListener('click', readButtonStep)
+
+    function readButtonStep(){
+      let index = readButton.dataset.id
+
+      if (readButton.innerHTML ==='Read'){
+        bookReadBoolean = true
+      } else{
+        bookReadBoolean = false
+      }
+
+      readButtonToggle(index)
+    }
 
     function deleteBookStep(){
       let index = deleteButton.dataset.id
@@ -160,12 +184,29 @@ function createLibrary(){
 }
 
 
+function readButtonToggle(index){
+  // let changeStatus = library[index]['bookStatus']
+  
+  if (bookReadBoolean === true){
+    // console.log('hello')
+
+    library[index]['bookStatus'] = 'Not Read'
+  } else{
+    // console.log('efwe')
+    library[index]['bookStatus'] = 'Read'
+  }
+
+  console.log(library[index]['bookStatus'])
+  localStorage.setItem('library', JSON.stringify(library))
+
+  location.reload()
+
+}
+
 function deleteBook(index){
 
   library.splice(index,1)
-
   localStorage.setItem('library', JSON.stringify(library))
-
   location.reload()
 
 
@@ -182,8 +223,8 @@ function closeBookForm(){
 
 window.onload = () => {
   library = JSON.parse(localStorage.getItem('library'))
-
   createLibrary()
+
 
 }
 
