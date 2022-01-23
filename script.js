@@ -76,6 +76,8 @@ function createNewBook() {
     form.reset();
   
     const newBook = new Book(bookName,author, pages, bookStatus)
+
+    console.log(newBook)
   
   
     library.push(newBook)
@@ -209,9 +211,6 @@ function deleteBook(index){
   library.splice(index,1)
   localStorage.setItem('library', JSON.stringify(library))
   location.reload()
-
-
-
 }
 
 
@@ -224,10 +223,7 @@ function closeBookForm(){
 
 window.onload = () => {
   library = JSON.parse(localStorage.getItem('library'))
-  console.log('library')
   createLibrary()
-
-
 }
 
  
