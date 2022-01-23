@@ -60,7 +60,8 @@ function createNewBook() {
 
   const pages = document.getElementById('pages').value;
   const readOrNot = document.getElementById('readOrNot').checked;
-
+  
+  console.log('hello')
 
   if (pages === ''){ 
     alert('The number of pages can only be in numbers!')
