@@ -83,6 +83,7 @@ function createNewBook() {
     localStorage.setItem('library', JSON.stringify(library))
   
     location.reload()
+    console.log(library)
     
     createLibrary()  
   }
@@ -93,6 +94,8 @@ function createNewBook() {
 function createLibrary(){
 
   for (i=0; i< library.length; i++){
+
+    console.log('hola')
     const bookCard = document.createElement("div");
 
     // console.log((bookCard.dataset.id))
@@ -223,6 +226,7 @@ function closeBookForm(){
 
 window.onload = () => {
   library = JSON.parse(localStorage.getItem('library'))
+  console.log(library)
   createLibrary()
 
 
