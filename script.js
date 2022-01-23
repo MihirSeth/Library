@@ -137,7 +137,6 @@ function createLibrary(){
     readButtonContainer.classList.add('readButtonContainer')
 
     if(library[i].bookStatus==='Read'){
-      console.log('hello')
       readButton.classList.add('readButton')
 
     } else if(library[i].bookStatus==='Not Read'){
@@ -191,11 +190,9 @@ function readButtonToggle(index){
   // let changeStatus = library[index]['bookStatus']
   
   if (bookReadBoolean === true){
-    // console.log('hello')
 
     library[index]['bookStatus'] = 'Not Read'
   } else{
-    // console.log('efwe')
     library[index]['bookStatus'] = 'Read'
   }
 
@@ -228,6 +225,6 @@ window.onload = () => {
     library = JSON.parse(localStorage.getItem('library'))
   }
 
-  console.log(localStorage.hasOwnProperty('library'))
+  // console.log(localStorage.hasOwnProperty('library'))
   createLibrary()
 }
