@@ -3,13 +3,22 @@ let bookStatus; let bookNumber; let booksReadCount; let booksUnreadCount; let bo
 let library = [];
 
 
-function Book(bookName, author, pages, bookStatus) {
-  this.bookName = bookName
-  this.author = author
-  this.pages = pages
-  this.bookStatus = bookStatus
-
+class Book{
+  constructor(
+    
+    bookName = 'Unknown',
+    author = 'Unknown',
+    pages = 0,
+    bookStatus = false
+    
+    ){
+    this.bookName = bookName
+    this.author = author
+    this.pages = pages
+    this.bookStatus = bookStatus
+  }
 }
+
 
 const overlay = document.getElementById('overlay');
 const submitButton = document.getElementById('submit');
@@ -94,8 +103,6 @@ function createNewBook() {
       createLibrary()  
     }
   }
-
-
   
 }
 
@@ -126,11 +133,9 @@ function createLibrary(){
 
     deleteButton.id = 'deleteButton'
     deleteButton.dataset.id = i
-
     readButton.id = 'readButton'
     readButton.dataset.id = i
 
-  
     bookCard.classList.add("book-card")
     nameCard.classList.add("bookName")
 
