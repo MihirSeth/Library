@@ -2,4 +2,4 @@
 
 It is your library!!!
 
-Live Demo -> https://mihirseth.github.io/Tic-Tac-Toe/
+Live Demo -> https://mihirseth.github.io/Library/
